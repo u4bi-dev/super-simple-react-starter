@@ -1,2 +1,2 @@
 # react-starter
-React app starter kit with my best practices.
+Just for learning, quickly setup.
