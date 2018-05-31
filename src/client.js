@@ -1,13 +1,15 @@
+import App from './components/App'
+import BrowserRouter from 'react-router-dom/BrowserRouter'
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { hydrate } from 'react-dom'
 
-import Layout from './components/Layout'
-
-const App = (
-  <Router>
-    <Layout />
-  </Router>
+hydrate(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
 )
 
-ReactDOM.hydrate(App, document.getElementById('app'))
+if (module.hot) {
+  module.hot.accept()
+}

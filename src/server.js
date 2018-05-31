@@ -1,45 +1,46 @@
-import express from 'express'
-import path from 'path'
-
+import App from './components/App'
 import React from 'react'
-import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
-import Layout from './components/Layout'
+import express from 'express'
+import { renderToString } from 'react-dom/server'
 
-const app = express()
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
-app.use(express.static(path.resolve(__dirname, '../dist')))
-app.disable('x-powered-by')
+const server = express()
+server
+  .disable('x-powered-by')
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .get('/*', (req, res) => {
+    const context = {}
+    const markup = renderToString(
+      <StaticRouter context={context} location={req.url}>
+        <App />
+      </StaticRouter>
+    )
 
-app.get('/*', (req, res) => {
-  const context = {}
-  const jsx = (
-    <StaticRouter context={context} location={req.url}>
-      <Layout />
-    </StaticRouter>
-  )
-  const reactDom = renderToString(jsx)
+    if (context.url) {
+      res.redirect(context.url)
+    } else {
+      res.status(200).send(`
+        <!doctype html>
+        <html lang="">
+          <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta charset="utf-8" />
+            <title>Welcome to Razzle</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            ${assets.client.css ? `<link rel="stylesheet" href="${assets.client.css}">` : ''}
+            ${
+              process.env.NODE_ENV === 'production'
+                ? `<script src="${assets.client.js}" defer></script>`
+                : `<script src="${assets.client.js}" defer crossorigin></script>`
+            }
+          </head>
+          <body>
+            <div id="root">${markup}</div>
+          </body>
+        </html>`)
+    }
+  })
 
-  res.writeHead(200, { 'Content-Type': 'text/html' })
-  res.end(htmlTemplate(reactDom))
-})
-
-app.listen(2048)
-
-function htmlTemplate(reactDom) {
-  return `
-      <!DOCTYPE html>
-      <html>
-      <head>
-          <meta charset="utf-8">
-          <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <title>React Starter</title>
-      </head>
-
-      <body>
-          <div id="app">${reactDom}</div>
-          <script src="./app.bundle.js"></script>
-      </body>
-      </html>
-    `
-}
+export default server

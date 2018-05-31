@@ -4,14 +4,16 @@
   "description": "React starter kit with my best practices.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "rimraf dist && webpack --mode production"
+    "start": "razzle start",
+    "build": "razzle build",
+    "test": "razzle test --env=jsdom",
+    "prod": "cross-env NODE_ENV=production node build/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/liamwang/react-starter.git"
   },
-  "keywords": ["react", "starter-kit"],
+  "keywords": ["react", "starter-kit", "ssr"],
   "author": "liamwang",
   "license": "MIT",
   "bugs": {
@@ -19,19 +21,13 @@
   },
   "homepage": "https://github.com/liamwang/react-starter#readme",
   "dependencies": {
-    "express": "^4.16.3",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-router-dom": "^4.2.2"
+    "cross-env": "^5.1.6",
+    "express": "4.16.3",
+    "react": "16.4.0",
+    "react-dom": "16.4.0",
+    "react-router-dom": "4.2.2"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "css-loader": "^0.28.11",
-    "rimraf": "^2.6.2",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3"
+    "razzle": "^2.0.0"
   }
 }
