@@ -4,10 +4,11 @@
   "description": "React starter kit with my best practices.",
   "main": "index.js",
   "scripts": {
-    "start": "razzle start",
+    "dev": "razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
-    "prod": "NODE_ENV=production node build/server.js"
+    "start": "NODE_ENV=production node build/server.js",
+    "start:win": "cross-env NODE_ENV=production node build/server.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
     "react-router-dom": "4.2.2"
   },
   "devDependencies": {
+    "cross-env": "^5.1.6",
     "razzle": "^2.0.0"
   }
 }

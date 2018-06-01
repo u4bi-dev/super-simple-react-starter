@@ -10,7 +10,7 @@ server.listen(process.env.PORT || 3000, error => {
     console.log(error)
   }
 
-  console.log('🚀  Started')
+  console.log(`🚀  Started: http://localhost:${process.env.PORT}`)
 })
 
 if (module.hot) {
