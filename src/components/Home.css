@@ -20,6 +20,7 @@
 
 .Home-resources {
   list-style: none;
+  padding: 0;
 }
 
 .Home-resources > li {

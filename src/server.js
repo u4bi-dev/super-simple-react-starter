@@ -6,6 +6,17 @@ import { renderToString } from 'react-dom/server'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
+const styles = Object.keys(assets).reduce((styles, key) => {
+  var link = assets[key].css
+  return styles + (link ? `<link rel="stylesheet" href="${link}" />` : '')
+}, '')
+
+const scripts = Object.keys(assets).reduce((scripts, key) => {
+  return scripts + `<script src="${assets[key].js}" defer crossorigin></script>`
+}, '')
+
+console.log(assets)
+
 const html = (title, markup) => {
   return `<!doctype html>
     <html lang="">
@@ -13,20 +24,16 @@ const html = (title, markup) => {
       <meta charset="UTF-8"/>
       <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Welcome to Razzle</title>
-      ${assets.client.css ? `<link rel="stylesheet" href="${assets.client.css}">` : ''}
-      ${
-        process.env.NODE_ENV === 'production'
-          ? `<script src="${assets.client.js}" defer></script>`
-          : `<script src="${assets.client.js}" defer crossorigin></script>`
-      }
+      <title>${title}</title>
+      ${styles}
+      ${scripts}
     </head>
     <body>
-      <div id="root"><!--MARKUP--></div>
+      <div id="root"><!--markup--></div>
     </body>
     </html>`
     .replace(/>(\s|\n)+</g, '><')
-    .replace('<!--MARKUP-->', markup)
+    .replace('<!--markup-->', markup)
 }
 
 const server = express()
@@ -34,7 +41,6 @@ server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
-    console.log(process.env.RAZZLE_PUBLIC_DIR)
     const context = {}
     const markup = renderToString(
       <StaticRouter context={context} location={req.url}>
