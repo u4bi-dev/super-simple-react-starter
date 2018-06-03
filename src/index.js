@@ -1,4 +1,3 @@
-import express from 'express'
 import app from './server'
 
 if (module.hot) {
@@ -10,12 +9,11 @@ if (module.hot) {
 
 const port = process.env.PORT || 3000
 
-export default express()
-  .use((req, res) => app.handle(req, res))
-  .listen(port, function(err) {
-    if (err) {
-      console.error(err)
-      return
-    }
-    console.log(`> Started on port ${port}`)
-  })
+app.listen(port, error => {
+  if (error) {
+    console.log(error)
+  }
+  console.log(`🚀  Started on port ${port}`)
+})
+
+export default app

@@ -33,6 +33,9 @@
   },
   "devDependencies": {
     "cross-env": "^5.1.6",
-    "razzle": "^2.0.2"
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "razzle": "^2.0.2",
+    "sass-loader": "^7.0.2"
   }
 }
