@@ -1,4 +1,4 @@
-import App from './components/App'
+import App from './layout/App'
 import React from 'react'
 import { StaticRouter } from 'react-router-dom'
 import express from 'express'
@@ -15,7 +15,7 @@ const scripts = Object.keys(assets).reduce((scripts, key) => {
   return scripts + `<script src="${assets[key].js}" defer crossorigin></script>`
 }, '')
 
-console.log(assets)
+// console.log(assets)
 
 const html = (title, markup) => {
   return `<!doctype html>
