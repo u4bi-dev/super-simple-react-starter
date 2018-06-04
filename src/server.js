@@ -1,5 +1,5 @@
-import App from './layout/App'
 import React from 'react'
+import App from './app'
 import { StaticRouter } from 'react-router-dom'
 import express from 'express'
 import { renderToString } from 'react-dom/server'

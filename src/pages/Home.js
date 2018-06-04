@@ -1,16 +1,13 @@
 import './Home.scss'
 
-import React from 'react'
-import Header from '../layout/Header'
+import React, { Component } from 'react'
 
-class Home extends React.Component {
+class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <Header />
-        <div className="Home-intro">
-          <a href="https://github.com/liamwang/vue-ssr-starter">GitHub</a>
-        </div>
+        <h1>Welcome to React-Starter</h1>
+        <a href="https://github.com/liamwang/vue-ssr-starter">GitHub</a>
       </div>
     )
   }
