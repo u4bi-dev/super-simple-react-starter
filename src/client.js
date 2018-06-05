@@ -1,13 +1,18 @@
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
 import { hydrate } from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import { Provider as ReduxProvider } from 'react-redux'
+import Layout from './layout'
+import createStore from './store'
 
-import App from './app'
+const store = createStore(window.__state__)
 
 hydrate(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <ReduxProvider store={store}>
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
+  </ReduxProvider>,
   document.getElementById('root')
 )
 
