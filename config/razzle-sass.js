@@ -12,7 +12,7 @@ module.exports = (baseConfig, { target, dev }, webpack) => {
       sourceMap: dev,
       plugins: () => [
         autoprefixer({
-          browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9'],
+          browsers: ['>1%', 'last 2 versions', 'Firefox ESR', 'not ie < 9'],
         }),
       ],
     },

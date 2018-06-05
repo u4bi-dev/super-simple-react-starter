@@ -1,9 +1,6 @@
 module.exports = (baseConfig, { target, dev }, webpack) => {
   let config = baseConfig
 
-  // remove sourcemap file in production
-  config.devtool = dev ? config.devtool : ''
-
   // Change the name of the server output file in production
   if (target === 'web') {
     // modify filenaming to account for multiple entry files
@@ -27,8 +24,8 @@ module.exports = (baseConfig, { target, dev }, webpack) => {
         chunks: 'all',
         // Switch off name generation, otherwise files would be invalidated
         // when more chunks with the same vendors are added
-        // 在dev环境，name=false会导致css代码不被加载
-        name: dev,
+        // 若值为 false,在开发模式下不能正常加载样式
+        name: 'vendor',
       },
     }
   }
