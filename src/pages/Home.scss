@@ -1,6 +1,18 @@
 .Home {
   text-align: center;
-  a {
-    font-weight: bold;
+}
+
+.Home-users {
+  width: 500px;
+  margin: 20px auto;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    li {
+      list-style: none;
+      display: block;
+      margin: 0 20px 20px 0;
+    }
   }
 }

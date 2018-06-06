@@ -16,6 +16,12 @@ hydrate(
   document.getElementById('root')
 )
 
-if (module.hot) {
-  module.hot.accept()
-}
+// if (module.hot) {
+//   module.hot.accept()
+// }
+
+// Enable Webpack hot module replacement for reducers
+module.hot.accept('./store/reducers', () => {
+  const nextRootReducer = require('./store/reducers/index')
+  store.replaceReducer(nextRootReducer)
+})

@@ -1,16 +1,10 @@
 import axios from 'axios'
 import thunk from 'redux-thunk'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-
-import userReducer from './reducers/userReducer'
-
-const reducers = combineReducers({
-  users: userReducer,
-})
+import { createStore, applyMiddleware } from 'redux'
+import reducers from './reducers'
 
 export const createServerStore = req => {
   const axiosInstance = axios.create({
-    baseURL: 'https://restcountries.eu/rest/v1/',
     headers: { cookie: req.get('cookie') || '' },
   })
 
@@ -18,9 +12,7 @@ export const createServerStore = req => {
 }
 
 export const createClientStore = initialState => {
-  const axiosInstance = axios.create({
-    baseURL: 'https://restcountries.eu/rest/v1/',
-  })
+  const axiosInstance = axios.create()
 
   return createStore(
     reducers,

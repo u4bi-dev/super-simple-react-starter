@@ -15,6 +15,9 @@ export default () => (
       </NavLink>
       <NavLink to="/about">About</NavLink>
       <NavLink to="/contact">Contact</NavLink>
+      <a style={{ color: 'gold' }} href="https://github.com/liamwang/react-starter">
+        GitHub
+      </a>
     </div>
   </div>
 )

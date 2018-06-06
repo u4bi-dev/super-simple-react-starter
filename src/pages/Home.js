@@ -5,13 +5,17 @@ import { connect } from 'react-redux'
 import { fetchUsers } from '../store/actions'
 
 class Home extends Component {
+  static prefetch(store) {
+    return store.dispatch(fetchUsers())
+  }
+
   componentDidMount() {
     // this.props.fetchUsers()
   }
 
   renderUsers() {
     return this.props.users.map(user => {
-      return <li key={user.name}>{user.name}</li>
+      return <li key={user.id.value}>{`${user.name.first} ${user.name.last}`}</li>
     })
   }
 
@@ -19,8 +23,8 @@ class Home extends Component {
     return (
       <div className="Home">
         <h1>Welcome to React-Starter</h1>
-        <a href="https://github.com/liamwang/vue-ssr-starter">GitHub</a>
-        <div>
+        <div className="Home-users">
+          <h3 style={{ color: 'gray' }}>Users</h3>
           <ul>{this.renderUsers()}</ul>
         </div>
       </div>
@@ -28,14 +32,8 @@ class Home extends Component {
   }
 }
 
-Home.prefetch = prefetch
-
 function mapStateToProps(state) {
   return { users: state.users }
-}
-
-function prefetch(store) {
-  return store.dispatch(fetchUsers())
 }
 
 export default connect(
