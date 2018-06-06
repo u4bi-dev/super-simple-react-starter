@@ -5,7 +5,7 @@ import { StaticRouter, matchPath } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import Layout from './layout'
 import routes from './routes'
-import createStore from './store'
+import { createServerStore } from './store'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
@@ -47,15 +47,15 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
     const context = {}
-    const store = createStore()
+    const store = createServerStore(req)
 
-    const dataRequirements = routes
+    const promises = routes
       .filter(route => matchPath(req.url, route))
       .map(route => route.component)
       .filter(comp => comp.prefetch)
-      .map(comp => store.dispatch(comp.prefetch()))
+      .map(comp => comp.prefetch(store))
 
-    Promise.all(dataRequirements).then(() => {
+    Promise.all(promises).then(() => {
       const markup = renderToString(
         <ReduxProvider store={store}>
           <StaticRouter context={context} location={req.url}>
