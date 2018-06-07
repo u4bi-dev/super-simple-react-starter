@@ -15,7 +15,11 @@ class Home extends Component {
 
   renderUsers() {
     return this.props.users.map(user => {
-      return <li key={user.id.value}>{`${user.name.first} ${user.name.last}`}</li>
+      return (
+        <li key={user.login.username}>
+          {`${user.name.first} ${user.name.last}`}
+        </li>
+      )
     })
   }
 

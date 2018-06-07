@@ -38,7 +38,7 @@ const html = (title, markup, state) => {
     </html>`
     .replace(/>(\s|\n)+</g, '><')
     .replace('<!--markup-->', markup)
-    .replace('<!--state-->', '__state__=' + JSON.stringify(state))
+    .replace('<!--state-->', 'window.__state__=' + JSON.stringify(state))
 }
 
 const server = express()
@@ -46,7 +46,7 @@ server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
-    const context = {}
+    const context = { isServer: true }
     const store = createServerStore(req)
 
     const promises = routes

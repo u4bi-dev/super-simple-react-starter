@@ -8,7 +8,11 @@ export const createServerStore = req => {
     headers: { cookie: req.get('cookie') || '' },
   })
 
-  return createStore(reducers, {}, applyMiddleware(thunk.withExtraArgument(axiosInstance)))
+  return createStore(
+    reducers,
+    {},
+    applyMiddleware(thunk.withExtraArgument(axiosInstance))
+  )
 }
 
 export const createClientStore = initialState => {
