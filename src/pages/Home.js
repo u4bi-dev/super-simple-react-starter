@@ -9,16 +9,12 @@ class Home extends Component {
     return store.dispatch(fetchUsers())
   }
 
-  componentDidMount() {
-    // this.props.fetchUsers()
-  }
-
   renderUsers() {
     return this.props.users.map(user => {
       return (
-        <li key={user.login.username}>
-          {`${user.name.first} ${user.name.last}`}
-        </li>
+        <li key={user.login.username}>{`${user.name.first} ${
+          user.name.last
+        }`}</li>
       )
     })
   }
