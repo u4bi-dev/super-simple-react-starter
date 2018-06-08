@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 export default class MyRoute extends React.Component {
   state = {
-    prevPath: this.context.store.getState().prevPath,
+    prevPath: this.context.store.getState().app.prevPath,
     currPath: this.context.router.route.match.path,
   }
 
@@ -16,16 +16,16 @@ export default class MyRoute extends React.Component {
   }
 
   shouldComponentUpdate() {
-    return true
+    return this.state.prevPath !== this.state.currPath
   }
 
   componentDidMount() {
-    console.log('prevPath', this.state.prevPath)
-    console.log('currPath', this.state.currPath)
+    if (this.shouldComponentUpdate() && this.props.component.prefetch) {
+      this.props.component.prefetch(this.context.store)
+    }
   }
 
   render() {
-    // console.log('context:', this.props.)
     const { component: Component, ...rest } = this.props
     return <Route {...rest} render={props => <Component {...props} />} />
   }

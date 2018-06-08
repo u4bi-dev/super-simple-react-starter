@@ -1,9 +1,12 @@
 import { SET_PREV_PATH } from '../actions'
 
-export default (state = '', action) => {
+export default (state = {}, action) => {
   switch (action.type) {
     case SET_PREV_PATH:
-      return action.data
+      return {
+        ...state,
+        prevPath: action.data,
+      }
     default:
       return state
   }
