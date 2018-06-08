@@ -1,12 +1,17 @@
-const url = 'https://randomuser.me/api/?results=10'
+export const SET_PREV_PATH = 'SET_PREV_PATH'
+export const setPrevPath = path => ({
+  type: SET_PREV_PATH,
+  data: path,
+})
 
-export const FETCH_USERS = 'fetch_users'
+const url = 'https://randomuser.me/api/?results=10'
+export const FETCH_USERS = 'FETCH_USERS'
 export const fetchUsers = () => async (dispatch, getState, api) => {
   const res = await api.get(url)
 
   dispatch({
     type: FETCH_USERS,
-    payload: res.data.results,
+    data: res.data.results,
   })
 }
 

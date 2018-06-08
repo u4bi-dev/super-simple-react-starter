@@ -3,15 +3,10 @@ import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 export default class MyRoute extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
+  state = {
+    prevPath: this.context.store.getState().prevPath,
+    currPath: this.context.router.route.match.path,
   }
-
-  // static propTypes = {
-  //   store: PropTypes.object.isRequired,
-  //   routes: PropTypes.object.isRequired,
-  // }
 
   static contextTypes = {
     router: PropTypes.shape({
@@ -20,7 +15,14 @@ export default class MyRoute extends React.Component {
     store: PropTypes.object,
   }
 
-  componentDidMount() {}
+  shouldComponentUpdate() {
+    return true
+  }
+
+  componentDidMount() {
+    console.log('prevPath', this.state.prevPath)
+    console.log('currPath', this.state.currPath)
+  }
 
   render() {
     // console.log('context:', this.props.)

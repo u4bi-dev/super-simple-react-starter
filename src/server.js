@@ -6,6 +6,7 @@ import { Provider as ReduxProvider } from 'react-redux'
 import App from './app'
 import routes from './routes'
 import { createServerStore } from './store'
+import { setPrevPath } from './store/actions'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
@@ -47,7 +48,9 @@ server
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
     const context = {}
+
     const store = createServerStore(req)
+    store.dispatch(setPrevPath(req.url))
 
     const promises = routes
       .filter(route => matchPath(req.url, route))
