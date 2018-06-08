@@ -1,13 +1,13 @@
-import '../assets/normalize.scss'
-import '../assets/base.scss'
+import './assets/normalize.scss'
+import './assets/base.scss'
 
 import React from 'react'
 import { Switch } from 'react-router-dom'
-import routes from '../routes'
-import Header from './Header'
-import MyRoute from './MyRoute'
+import Header from './components/Header'
+import MyRoute from './components/MyRoute'
+import routes from './routes'
 
-export default class Layout extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <div>
@@ -19,3 +19,5 @@ export default class Layout extends React.Component {
     )
   }
 }
+
+export default App

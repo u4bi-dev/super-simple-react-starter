@@ -3,7 +3,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter, matchPath } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
-import Layout from './layout'
+import App from './app'
 import routes from './routes'
 import { createServerStore } from './store'
 
@@ -46,7 +46,7 @@ server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .get('/*', (req, res) => {
-    const context = { isServer: true }
+    const context = {}
     const store = createServerStore(req)
 
     const promises = routes
@@ -59,7 +59,7 @@ server
       const markup = renderToString(
         <ReduxProvider store={store}>
           <StaticRouter context={context} location={req.url}>
-            <Layout />
+            <App />
           </StaticRouter>
         </ReduxProvider>
       )

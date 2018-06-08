@@ -20,21 +20,7 @@ export default class MyRoute extends React.Component {
     store: PropTypes.object,
   }
 
-  componentDidMount() {
-    console.log(this.props)
-    // const { component, isServer } = this.props
-    // if (!isServer && component.prefetch) {
-    //   component.prefetch(this.context.store)
-    // }
-    // // console.log(this.props)
-    // // console.log('isServer:' + this.state.isServer)
-    // try {
-    //   // const apiValue = await get('/some/api')
-    //   // this.setState({ apiValue })
-    // } catch (err) {
-    //   // error handling
-    // }
-  }
+  componentDidMount() {}
 
   render() {
     // console.log('context:', this.props.)
