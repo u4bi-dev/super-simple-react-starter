@@ -4,7 +4,12 @@ module.exports = (baseConfig, { target, dev }, webpack) => {
   // Change the name of the server output file in production
   if (target === 'web') {
     // modify filenaming to account for multiple entry files
-    config.output.filename = dev ? 'static/js/[name].js' : 'static/js/[name].[hash:8].js'
+    config.output.filename = dev
+      ? 'static/js/[name].js'
+      : 'static/js/[name].[hash:8].js'
+    config.output.chunkFilename = dev
+      ? 'static/js/[name].c.js'
+      : 'static/js/[id].[hash:8].c.js'
 
     // add another entry point called vendor
     config.entry.vendor = [
@@ -19,13 +24,10 @@ module.exports = (baseConfig, { target, dev }, webpack) => {
     ]
 
     config.optimization = {
+      // Chunk splitting optimiztion
       splitChunks: {
-        // Chunk splitting optimiztion
         chunks: 'all',
-        // Switch off name generation, otherwise files would be invalidated
-        // when more chunks with the same vendors are added
-        // 若值为 false,在开发模式下不能正常加载样式
-        name: 'vendor',
+        name: true,
       },
     }
   }

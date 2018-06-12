@@ -2,7 +2,7 @@
 
 const razzleSass = require('./config/razzle-sass')
 const razzleInlineSvg = require('./config/razzle-inline-svg')
-// const razzleVendorBundle = require('./config/razzle-vendor-bundle')
+const razzleVendorBundle = require('./config/razzle-vendor-bundle')
 
 module.exports = {
   modify(defaultConfig, { target, dev }, webpack) {
@@ -13,7 +13,7 @@ module.exports = {
 
     config = razzleSass(config, { target, dev }, webpack)
     config = razzleInlineSvg(config, { target, dev }, webpack)
-    // config = razzleVendorBundle(config, { target, dev }, webpack)
+    config = razzleVendorBundle(config, { target, dev }, webpack)
 
     return config
   },

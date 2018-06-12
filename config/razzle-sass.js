@@ -12,7 +12,7 @@ module.exports = (baseConfig, { target, dev }, webpack) => {
       sourceMap: dev,
       plugins: () => [
         autoprefixer({
-          browsers: ['>1%', 'last 2 versions', 'Firefox ESR', 'not ie < 9'],
+          browsers: ['>1%', 'last 2 versions', 'not ie < 9'],
         }),
       ],
     },
@@ -36,7 +36,12 @@ module.exports = (baseConfig, { target, dev }, webpack) => {
     test: /.scss$/,
     use: isServer
       ? [cssLoader, sassLoader]
-      : [dev ? 'style-loader' : MiniCssExtractPlugin.loader, cssLoader, postCssLoader, sassLoader],
+      : [
+          dev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          cssLoader,
+          postCssLoader,
+          sassLoader,
+        ],
   })
 
   if (!isServer && !dev) {
