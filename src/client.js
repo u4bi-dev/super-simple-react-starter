@@ -7,20 +7,26 @@ import { createClientStore } from './store'
 
 const store = createClientStore(window.__state__)
 
-hydrate(
-  <ReduxProvider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ReduxProvider>,
-  document.getElementById('root')
-)
+const doHydrate = () =>
+  hydrate(
+    <ReduxProvider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ReduxProvider>,
+    document.getElementById('root')
+  )
+
+doHydrate()
 
 if (module.hot) {
-  // module.hot.accept()
-  // Enable Webpack hot module replacement for reducers
-  module.hot.accept('./store/reducers', () => {
-    const nextRootReducer = require('./store/reducers/index')
-    store.replaceReducer(nextRootReducer)
-  })
+  module.hot.accept('./layout/App', doHydrate)
 }
+
+// if (module.hot) {
+//   // Enable Webpack hot module replacement for reducers
+//   module.hot.accept('./store/reducers', () => {
+//     const nextRootReducer = require('./store/reducers/index')
+//     store.replaceReducer(nextRootReducer)
+//   })
+// }
