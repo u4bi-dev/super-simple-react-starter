@@ -3,7 +3,6 @@ import './assets/base.scss'
 
 import React from 'react'
 import { Switch } from 'react-router-dom'
-import { connect } from 'react-redux'
 import Header from './components/Header'
 import MyRoute from './components/MyRoute'
 import routes from './routes'
@@ -21,4 +20,4 @@ class App extends React.Component {
   }
 }
 
-export default connect()(App)
+export default App

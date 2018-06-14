@@ -20,7 +20,7 @@ const doHydrate = () =>
 doHydrate()
 
 if (module.hot) {
-  module.hot.accept('./layout/App', doHydrate)
+  module.hot.accept('./app', doHydrate)
 }
 
 // if (module.hot) {
