@@ -8,6 +8,7 @@
 
 - Server-Side Rendering
 - Razzle
+- Sass
 - React-router-dom v4+
 - Redux + Axios
 - Preload / prefetch resource
