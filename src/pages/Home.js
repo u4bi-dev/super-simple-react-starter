@@ -24,7 +24,7 @@ class Home extends Component {
       <div className="Home">
         <h1>Welcome to React-Starter</h1>
         <div className="Home-users">
-          <h3 style={{ color: 'gray' }}>Users</h3>
+          <h3 style={{ color: 'gray' }}>SSR Random Users</h3>
           <ul>{this.renderUsers()}</ul>
         </div>
       </div>

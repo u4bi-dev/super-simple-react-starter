@@ -2,7 +2,7 @@
 
 > A react starter kit with SSR.
 
-![image](https://user-images.githubusercontent.com/5000396/40930696-003853e4-685b-11e8-865c-71308fa8c822.png)
+![image](https://user-images.githubusercontent.com/5000396/41952115-d7b204f8-7a00-11e8-907e-6b682568892b.png)
 
 ## Branches
 
