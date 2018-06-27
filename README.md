@@ -9,4 +9,3 @@
 - [ssr](https://github.com/liamwang/react-starter) (default)
 - [spa](https://github.com/liamwang/react-starter/tree/spa)
 - [ssr-router](https://github.com/liamwang/react-starter/tree/ss-router)
-- [ssr-razzle](https://github.com/liamwang/react-starter/tree/ss-razzle)
