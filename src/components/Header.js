@@ -3,6 +3,9 @@ import './Header.scss'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import { Button } from 'semantic-ui-react'
+
+
 import SvgIcon from '../components/SvgIcon'
 import reactSvg from '../assets/react.svg'
 
@@ -19,5 +22,6 @@ export default () => (
         GitHub
       </a>
     </div>
+    <Button>Click Here</Button>
   </div>
 )
