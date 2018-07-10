@@ -24,7 +24,7 @@ export const createServerStore = req => {
   return store
 }
 
-export const createClientStore = initialState => {
+export const configureStore = initialState => {
   // const axiosInstance = axios.create()
   
   const epicMiddleware = createEpicMiddleware()

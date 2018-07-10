@@ -3,9 +3,10 @@ import { hydrate } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import App from './app'
-import { createClientStore } from './store'
 
-const store = createClientStore(window.__state__)
+import { configureStore } from './store'
+
+const store = configureStore(window.__state__)
 
 const doHydrate = () =>
   hydrate(
@@ -22,11 +23,3 @@ doHydrate()
 if (module.hot) {
   module.hot.accept('./app', doHydrate)
 }
-
-// if (module.hot) {
-//   // Enable Webpack hot module replacement for reducers
-//   module.hot.accept('./store/reducers', () => {
-//     const nextRootReducer = require('./store/reducers/index')
-//     store.replaceReducer(nextRootReducer)
-//   })
-// }
