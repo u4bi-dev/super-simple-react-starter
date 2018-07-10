@@ -26,6 +26,12 @@ yarn start
 
 3. running tests `yarn test`
 
+## Deploy in Docker Container
+
+```
+$ docker-compose build && docker-compose up
+```
+
 ## Features
 
 - Server-Side Rendering
