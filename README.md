@@ -24,6 +24,8 @@ yarn start
 
 2. open the local server with the production file `yarn start:prod`
 
+3. running tests `yarn test`
+
 ## Features
 
 - Server-Side Rendering
