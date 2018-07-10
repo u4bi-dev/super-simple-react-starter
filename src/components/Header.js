@@ -5,23 +5,22 @@ import { NavLink } from 'react-router-dom'
 
 import { Button } from 'semantic-ui-react'
 
-
-import SvgIcon from '../components/SvgIcon'
-import reactSvg from '../assets/react.svg'
-
 export default () => (
   <div className="Header">
-    <SvgIcon className="Header-logo" svg={reactSvg} />
-    <div className="Header-nav">
-      <NavLink exact to="/">
-        Home
-      </NavLink>
+
+    <h3>
+      <NavLink exact to="/">Home</NavLink>
+    </h3>
+
+    <h3>
       <NavLink to="/about">About</NavLink>
+    </h3>
+
+    <h3>
       <NavLink to="/contact">Contact</NavLink>
-      <a style={{ color: 'gold' }} href="https://github.com/liamwang/react-starter">
-        GitHub
-      </a>
-    </div>
+    </h3>
+
     <Button>Click Here</Button>
+
   </div>
 )

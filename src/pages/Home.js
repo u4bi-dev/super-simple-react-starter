@@ -14,21 +14,14 @@ class Home extends Component {
   renderUsers() {
     const { users } = this.props;
 
-    return users.map( (user, i) => {
-      return (
-        <li key={ i }> { user.name }</li>
-      )
-    })
+    return users.map( (user, i) => ( <li key={ i }> { user.name }</li> ))
   }
 
   render() {
 
     return (
       <div className="Home">
-        <h1>Welcome to React-Starter</h1>
-        <div className="Home-users">
-          <ul>{this.renderUsers()}</ul>
-        </div>
+        <ul>{ this.renderUsers() }</ul>
       </div>
     )
   }
