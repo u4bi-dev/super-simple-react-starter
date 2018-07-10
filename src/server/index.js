@@ -8,7 +8,7 @@ import App from '../app'
 import routes from '../routes'
 import { createServerStore } from '../store'
 
-// import { setPrevPath } from './store/actions'
+import { setPrevPath } from '../store/actions'
 
 import html from './providers/html'
 import promises from './providers/promises'
@@ -24,7 +24,8 @@ server
 
         const context = {}
         const store = createServerStore(req)
-        // store.dispatch(setPrevPath(req.url))
+
+        store.dispatch(setPrevPath(req.url))
 
         Promise.all(promises(routes, req.url, store)).then(_ => {
 

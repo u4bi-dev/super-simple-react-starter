@@ -5,7 +5,7 @@ import { ActionTypes } from '../constants';
 
 const userState = {
     pending: false,
-    data : {}
+    data : []
 };
 
 export default {

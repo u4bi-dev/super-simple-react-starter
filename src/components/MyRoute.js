@@ -1,13 +1,15 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 import PropTypes from 'prop-types'
-// import { setPrevPath } from '../store/actions'
+import { setPrevPath } from '../store/actions'
 
 export default class MyRoute extends React.Component {
   constructor(props, context) {
     super(props)
-    // this.prevPath = context.store.getState().app.prevPath
+    this.prevPath = context.store.getState().app.prevPath
     this.currPath = context.router.route.location.pathname
+
+    // console.log(this.prevPath, this.currPath);
   }
 
   static contextTypes = {
@@ -18,8 +20,7 @@ export default class MyRoute extends React.Component {
   }
 
   shouldComponentUpdate() {
-    // return this.prevPath !== this.currPath
-    console.log('shouldComponentUpdate');
+    return this.prevPath !== this.currPath
   }
 
   componentDidMount() {
@@ -30,7 +31,7 @@ export default class MyRoute extends React.Component {
   }
 
   componentWillUnmount() {
-    // this.context.store.dispatch(setPrevPath(this.currPath))
+    this.context.store.dispatch(setPrevPath(this.currPath))
     console.log('componentWillUnmount');
   }
 
