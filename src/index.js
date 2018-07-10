@@ -1,10 +1,10 @@
 import app from './server'
 
 if (module.hot) {
-  
-  module.hot.accept('./server', _ => console.log('🔁  HMR Reloading `./server`...'))
 
-  console.info('✅  Server-side HMR Enabled!')
+    module.hot.accept('./server', _ => console.log('🔁  HMR Reloading `./server`...'))
+
+    console.info('✅  Server-side HMR Enabled!')
 
 }
 

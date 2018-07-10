@@ -5,30 +5,30 @@ import epics from './epics';
 
 export const createServerStore = req => {
 
-  const epicMiddleware = createEpicMiddleware()
+    const epicMiddleware = createEpicMiddleware()
 
-  const store = createStore(
-    reducers,
-    {},
-    applyMiddleware(epicMiddleware)
-  )
+    const store = createStore(
+        reducers,
+        {},
+        applyMiddleware(epicMiddleware)
+    )
 
-  epicMiddleware.run(epics);
+    epicMiddleware.run(epics);
 
-  return store
+    return store
 }
 
 export const configureStore = initialState => {
-  
-  const epicMiddleware = createEpicMiddleware()
 
-  const store = createStore(
-    reducers,
-    initialState,
-    applyMiddleware(epicMiddleware)
-  )
+    const epicMiddleware = createEpicMiddleware()
 
-  epicMiddleware.run(epics);
+    const store = createStore(
+        reducers,
+        initialState,
+        applyMiddleware(epicMiddleware)
+    )
 
-  return store
+    epicMiddleware.run(epics);
+
+    return store
 }

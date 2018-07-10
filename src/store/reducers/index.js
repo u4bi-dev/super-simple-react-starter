@@ -3,6 +3,6 @@ import app from './app'
 import users from './users'
 
 export default combineReducers({
-  ...app,
-  ...users
+    ...app,
+    ...users
 })

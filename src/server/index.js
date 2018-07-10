@@ -37,7 +37,7 @@ server
                 </ReduxProvider>
             )
 
-            context.url ? res.redirect(context.url) : res.status(200).send(html(assets, 'React Starter', markup, store.getState()))
+            context.url ? res.redirect(context.url) : res.status(200).send(html(assets, 'Super Simple React Starter', markup, store.getState()))
 
         })
     })

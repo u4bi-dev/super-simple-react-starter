@@ -9,17 +9,17 @@ import { configureStore } from './store'
 const store = configureStore(window.__state__)
 
 const doHydrate = () =>
-  hydrate(
-    <ReduxProvider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </ReduxProvider>,
-    document.getElementById('root')
-  )
+    hydrate(
+        <ReduxProvider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </ReduxProvider>,
+        document.getElementById('root')
+    )
 
 doHydrate()
 
 if (module.hot) {
-  module.hot.accept('./app', doHydrate)
+    module.hot.accept('./app', doHydrate)
 }

@@ -9,16 +9,16 @@ import MyRoute from './components/MyRoute'
 import routes from './routes'
 
 class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Header />
-        <Switch>
-          {routes.map(route => <MyRoute key={route.path} {...route} />)}
-        </Switch>
-      </div>
-    )
-  }
+    render() {
+        return (
+        <div>
+            <Header />
+            <Switch>
+                {routes.map(route => <MyRoute key={route.path} {...route} />)}
+            </Switch>
+        </div>
+        )
+    }
 }
 
 export default App
