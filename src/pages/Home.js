@@ -2,29 +2,31 @@ import './Home.scss'
 
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
 import { fetchUsers } from '../store/actions'
 
 class Home extends Component {
+
   static prefetch(store) {
-    return store.dispatch(fetchUsers())
+    store.dispatch(fetchUsers());
   }
 
   renderUsers() {
-    return this.props.users.map(user => {
+    const { users } = this.props;
+
+    return users.map( (user, i) => {
       return (
-        <li key={user.login.username}>{`${user.name.first} ${
-          user.name.last
-        }`}</li>
+        <li key={ i }> { user.name }</li>
       )
     })
   }
 
   render() {
+
     return (
       <div className="Home">
         <h1>Welcome to React-Starter</h1>
         <div className="Home-users">
-          <h3 style={{ color: 'gray' }}>SSR Random Users</h3>
           <ul>{this.renderUsers()}</ul>
         </div>
       </div>
@@ -32,11 +34,12 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { users: state.users }
-}
+const mapState = (state, ownProps) => ({ 
+  users: state.users.data
+});
 
-export default connect(
-  mapStateToProps,
-  { fetchUsers }
-)(Home)
+const mapDispatch = (dispatch, ownProps) => ({
+
+});
+
+export default connect(mapState, mapDispatch)(Home);
