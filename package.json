@@ -37,7 +37,8 @@
     "redux-observable": "^1.0.0",
     "rxjs": "^6.2.1",
     "semantic-ui-css": "^2.3.2",
-    "semantic-ui-react": "^0.82.0"
+    "semantic-ui-react": "^0.82.0",
+    "styled-components": "^3.3.3"
   },
   "devDependencies": {
     "cross-env": "^5.1.6",

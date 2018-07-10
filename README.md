@@ -2,7 +2,7 @@
 
 > A react starter kit with SSR.
 
-<img width="600" src="demo.png"/>
+<img width="600" src="_demo.png"/>
 
 ## Installation
 
@@ -35,6 +35,7 @@ yarn start
 - Code splitting
 - Latest packages
 - semantic-ui-react
+- styled-components
 
 Copyright © 2018 Liang Wang, Myungjae Yu
 
