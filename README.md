@@ -1,17 +1,21 @@
-# react-starter
+# super-simple-react-starter
 
 > A react starter kit with SSR.
 
 <img width="600" src="_demo.png"/>
+
+## Demo
+
+https://super-simple-react-starter-zeddcvkxrk.now.sh
 
 ## Installation
 
 ```
 yarn global add create-razzle-app
 
-git clone https://github.com/myungjaeyu/react-starter.git
+git clone https://github.com/myungjaeyu/super-simple-react-starter.git
 
-cd react-starter
+cd super-simple-react-starter
 
 yarn install
 
@@ -54,3 +58,8 @@ ___
 > | Vendor                | URL                                                   |
 > |------------------------|------------------------------------------------------|
 > | Razzle                 | https://github.com/jaredpalmer/razzle                |
+
+
+## License
+
+This project is licensed under the [MIT license](LICENSE).

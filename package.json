@@ -1,5 +1,5 @@
 {
-  "name": "react-starter",
+  "name": "super-simple-react-starter",
   "version": "1.0.0",
   "description": "React starter kit with my best practices.",
   "main": "index.js",
@@ -12,19 +12,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liamwang/react-starter.git"
+    "url": "git+https://github.com/myungjaeyu/super-simple-react-starter.git"
   },
   "keywords": [
     "react",
     "starter-kit",
     "ssr"
   ],
-  "author": "liamwang",
+  "author": "myungjaeyu",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/liamwang/react-starter/issues"
+    "url": "https://github.com/myungjaeyu/super-simple-react-starter/issues"
   },
-  "homepage": "https://github.com/liamwang/react-starter#readme",
+  "homepage": "https://github.com/myungjaeyu/super-simple-react-starter#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.3",
