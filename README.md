@@ -2,7 +2,7 @@
 
 > A react starter kit with SSR.
 
-![image](https://user-images.githubusercontent.com/5000396/41952115-d7b204f8-7a00-11e8-907e-6b682568892b.png)
+<img width="600" src="demo.png"/>
 
 ## Features
 
@@ -10,7 +10,18 @@
 - Razzle
 - Sass
 - React-router-dom v4+
-- Redux + Axios
+- Redux-observable
 - Preload / prefetch resource
 - Code splitting
 - Latest packages
+- semantic-ui-react
+
+Copyright © 2018 Liang Wang, Myungjae Yu
+
+___
+
+### Requirements
+
+> | Vendor                | URL                                                   |
+> |------------------------|------------------------------------------------------|
+> | Razzle                 | https://github.com/jaredpalmer/razzle                |

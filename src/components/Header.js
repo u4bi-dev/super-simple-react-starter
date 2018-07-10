@@ -20,7 +20,7 @@ export default () => (
       <NavLink to="/contact">Contact</NavLink>
     </h3>
 
-    <Button>Click Here</Button>
+    <Button>semantic-ui Button</Button>
 
   </div>
 )
