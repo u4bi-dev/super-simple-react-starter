@@ -3,6 +3,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
+import Helmet from 'react-helmet'
 
 import App from '../app'
 import routes from '../routes'
@@ -10,7 +11,7 @@ import { createServerStore } from '../store'
 
 import { setPrevPath } from '../store/actions'
 
-import html from './providers/html'
+import { injectHTML } from './providers/html'
 import promises from './providers/promises'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
@@ -37,7 +38,20 @@ server
                 </ReduxProvider>
             )
 
-            context.url ? res.redirect(context.url) : res.status(200).send(html(assets, 'Super Simple React Starter', markup, store.getState()))
+            const helmet = Helmet.renderStatic()
+
+            context.url ? 
+                res.redirect(context.url)
+                : 
+                res.status(200)
+                    .send(injectHTML(
+                            assets,
+                            helmet.htmlAttributes.toString(),
+                            helmet.title.toString(),
+                            helmet.meta.toString(),
+                            helmet.link.toString(),
+                            markup, 
+                            store.getState()))
 
         })
     })

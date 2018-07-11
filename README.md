@@ -6,7 +6,7 @@
 
 ## Demo
 
-https://super-simple-react-starter-zeddcvkxrk.now.sh
+https://super-simple-react-starter-frxszcpxry.now.sh
 
 ## Installation
 
@@ -48,6 +48,7 @@ $ docker-compose build && docker-compose up
 - Latest packages
 - semantic-ui-react
 - styled-components
+- SEO support via react-helmet
 
 Copyright © 2018 Liang Wang, Myungjae Yu
 

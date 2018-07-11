@@ -1,15 +1,14 @@
 import styles from './styles';
 import scripts from './scripts';
 
-const html = (assets, title, markup, state) => {
+export const injectHTML = (assets, html, title, meta, link, markup, state) => {
 
     return `<!doctype html>
-        <html lang="">
+        <html ${ html }>
         <head>
-        <meta charset="UTF-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${title}</title>
+        ${ title }
+        ${ meta }
+        ${ link }
         ${ styles(assets) }
         </head>
         <body>
@@ -23,5 +22,3 @@ const html = (assets, title, markup, state) => {
         .replace('<!--state-->', 'window.__state__=' + JSON.stringify(state));
 
 };
-  
-export default html;
