@@ -1,6 +1,6 @@
+import 'semantic-ui-css/semantic.min.css';
 import './assets/normalize.scss'
 import './assets/base.scss'
-import 'semantic-ui-css/semantic.min.css';
 
 import React from 'react'
 import { Switch, Redirect, withRouter } from 'react-router-dom'
