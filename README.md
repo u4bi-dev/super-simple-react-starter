@@ -2,7 +2,7 @@
 
 > A react starter kit with SSR.
 
-<img width="600" src="_demo.png"/>
+<img width="600" src="demo.png"/>
 
 ## Demo
 

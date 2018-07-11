@@ -3,7 +3,7 @@ import './assets/base.scss'
 import 'semantic-ui-css/semantic.min.css';
 
 import React from 'react'
-import { Switch } from 'react-router-dom'
+import { Switch, Redirect } from 'react-router-dom'
 import Header from './components/Header'
 import MyRoute from './components/MyRoute'
 import routes from './routes'
@@ -15,6 +15,7 @@ class App extends React.Component {
             <Header />
             <Switch>
                 {routes.map(route => <MyRoute key={route.path} {...route} />)}
+                <Redirect to='/'/>
             </Switch>
         </div>
         )
