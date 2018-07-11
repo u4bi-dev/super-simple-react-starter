@@ -1,7 +1,7 @@
 import styles from './styles';
 import scripts from './scripts';
 
-export const injectHTML = (assets, html, title, meta, link, markup, state) => {
+export const injectHTML = (assets, html, title, meta, link, styledCss, markup, state) => {
 
     return `<!doctype html>
         <html ${ html }>
@@ -10,6 +10,7 @@ export const injectHTML = (assets, html, title, meta, link, markup, state) => {
         ${ meta }
         ${ link }
         ${ styles(assets) }
+        ${ styledCss }
         </head>
         <body>
         <div id="root"><!--markup--></div>

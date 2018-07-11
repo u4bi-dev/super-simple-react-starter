@@ -1,6 +1,7 @@
 import express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
+import { ServerStyleSheet } from 'styled-components'
 import { StaticRouter } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import Helmet from 'react-helmet'
@@ -30,13 +31,17 @@ server
 
         Promise.all(promises(routes, req.url, store)).then(_ => {
 
-            const markup = renderToString(
+            const sheet = new ServerStyleSheet()
+
+            const markup = renderToString(sheet.collectStyles(
                 <ReduxProvider store={store}>
                     <StaticRouter context={context} location={req.url}>
                         <App />
                     </StaticRouter>
                 </ReduxProvider>
-            )
+            ))
+
+            const styledCss = sheet.getStyleTags()
 
             const helmet = Helmet.renderStatic()
 
@@ -50,6 +55,7 @@ server
                             helmet.title.toString(),
                             helmet.meta.toString(),
                             helmet.link.toString(),
+                            styledCss,
                             markup, 
                             store.getState()))
 
