@@ -1,4 +1,5 @@
 import express from 'express'
+import session from 'express-session'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { ServerStyleSheet } from 'styled-components'
@@ -17,15 +18,25 @@ import promises from './providers/promises'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
+const sessionConfig = {
+    secret: process.env.SESSION_SECRET || 'secretKEYu4bi-test-1234@#',
+    resave: false, 
+    saveUninitialized: true
+}
+
 const server = express()
 
 server
     .disable('x-powered-by')
+    .use(session(sessionConfig))
     .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
     .get('/*', (req, res) => {
 
         const context = {}
-        const store = createServerStore(req)
+        const store = createServerStore()
+        
+        // console.log(req.get('cookie'))
+        // console.log(req.session);
 
         store.dispatch(setPrevPath(req.url))
 

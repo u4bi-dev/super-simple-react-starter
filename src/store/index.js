@@ -3,7 +3,7 @@ import { createEpicMiddleware } from 'redux-observable'
 import reducers from './reducers'
 import epics from './epics';
 
-export const createServerStore = req => {
+export const createServerStore = _ => {
 
     const epicMiddleware = createEpicMiddleware()
 
