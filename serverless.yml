@@ -1,0 +1,35 @@
+service: super-simple-react-starter
+
+plugins:
+  - serverless-apigw-binary
+  - serverless-dotenv-plugin
+
+custom:
+  apigwBinary:
+    types:
+      - '*/*'
+  dotenv:
+    path: .env
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+package:
+  exclude:
+    - ./**
+  include:
+    - build/**
+
+functions:
+  hello:
+    handler: build/server.handler
+    events:
+      - http:
+          method: get
+          cors: true
+          path: /
+      - http:
+          method: any
+          cors: true
+          path: /{proxy+}
