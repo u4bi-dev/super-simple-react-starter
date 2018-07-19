@@ -13,6 +13,8 @@ module.exports = {
     config = razzleSass(config, { target, dev }, webpack)
     config = razzleVendorBundle(config, { target, dev }, webpack)
 
+    if (target === 'node' && !dev) config.externals = []
+
     return config
   },
 }
