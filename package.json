@@ -27,6 +27,7 @@
   "homepage": "https://github.com/myungjaeyu/super-simple-react-starter#readme",
   "dependencies": {
     "axios": "^0.18.0",
+    "aws-serverless-express": "^3.2.0",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "immutability-helper": "^2.7.1",
@@ -50,6 +51,8 @@
     "razzle": "^2.1.0",
     "rebuild-node-sass": "^1.1.0",
     "sass-loader": "^7.0.3",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-dotenv-plugin": "^1.1.5",
     "svg-inline-loader": "^0.8.0"
   }
 }
