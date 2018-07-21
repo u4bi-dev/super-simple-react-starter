@@ -4,7 +4,7 @@
   "description": "React starter kit with my best practices.",
   "main": "index.js",
   "scripts": {
-    "start": "razzle start",
+    "start": "cross-env EXECUTION_ENV=dev razzle start",
     "build": "razzle build",
     "test": "razzle test --env=jsdom",
     "start:prod": "cross-env NODE_ENV=production node build/server.js",
