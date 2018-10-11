@@ -36,7 +36,7 @@ npm start
 $ docker-compose build && docker-compose up
 ```
 
-## Deploy in Serverless AWS Lambda
+## Deploy in Serverless AWS Lambda & CloudFront
 
 ```
 $ serverless deploy
@@ -55,6 +55,8 @@ $ serverless deploy
 - semantic-ui-react
 - styled-components for SSR
 - SEO support via react-helmet
+- Circle CI
+- react-test-renderer
 
 Copyright © 2018 Liang Wang, Myungjae Yu
 
