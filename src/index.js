@@ -21,23 +21,7 @@ if (process.env.EXECUTION_ENV !== 'serverless') {
 } else {
 
     let binaries = [
-        'application/javascript',
-        'application/json',
-        'application/octet-stream',
-        'application/xml',
-        'font/eot',
-        'font/opentype',
-        'font/otf',
-        'image/jpeg',
-        'image/png',
-        'image/svg+xml',
-        'text/comma-separated-values',
-        'text/css',
-        'text/html',
-        'text/javascript',
-        'text/plain',
-        'text/text',
-        'text/xml'
+        '*/*'
     ]
     
     let server = awsServerlessExpress.createServer(app, null, binaries)
