@@ -3,6 +3,7 @@ service: super-simple-react-starter
 plugins:
   - serverless-apigw-binary
   - serverless-dotenv-plugin
+  - serverless-api-cloudfront
 
 custom:
   apigwBinary:
@@ -10,10 +11,15 @@ custom:
       - '*/*'
   dotenv:
     path: .env
+  apiCloudFront:
+    domain:
+      - example.com
+    certificate: 	arn:aws:acm:us-east-1:00000000:certificate/00000000-00000000-00000000-00000000-00000000
 
 provider:
   name: aws
   runtime: nodejs8.10
+  region: ap-northeast-2
 
 package:
   exclude:
