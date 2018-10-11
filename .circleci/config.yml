@@ -1,0 +1,56 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:7.10
+  working_directory: ~/repo
+
+modules_get_cache: &modules_get_cache
+  restore_cache:
+    keys:
+    - v1-dependencies-{{ checksum "package.json" }}
+    - v1-dependencies-
+
+modules_save_cache: &modules_save_cache
+  save_cache:
+    paths:
+      - node_modules
+    key: v1-dependencies-{{ checksum "package.json" }}
+
+version: 2
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *modules_get_cache
+      - run: npm install
+      - <<: *modules_save_cache
+      - run: npm run test:ci
+
+  test_build_prod:
+    <<: *defaults
+    steps:
+      - checkout
+      - <<: *modules_get_cache
+      - run: npm install
+      - <<: *modules_save_cache
+      - run: npm run test:ci
+      - run: npm run build
+      - run: sudo npm i -g serverless
+      - run: sls deploy
+
+workflows:
+  version: 2
+  dev_commit:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only: 
+                - dev
+  master_commit:
+    jobs:
+      - test_build_prod:
+          filters:
+            branches:
+              only: 
+                - master
