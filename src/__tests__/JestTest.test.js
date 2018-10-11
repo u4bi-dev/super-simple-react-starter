@@ -1,30 +1,64 @@
-import { sum, sum2 } from '../common/JestTest'
-import { get } from 'axios'
+import { sum } from '../common/JestTest';
+import { get } from 'axios';
 
-test('Sum', () => {
-    expect(sum(1, 2)).toBe(3);
 
-    expect(sum(1, 3)).toBe(4);
+describe('unit test 테스트', () => {
 
-    expect(sum(1, 4)).toBe(5);
+    describe('Sum 테스트', () => {
 
-    expect(sum(1, 5)).toBe(6);
+        it('1 + 2 테스트', () => {
 
-})
+            expect(sum(1, 2)).toEqual(3);
+            expect(sum(1, 2)).toBe(3);
 
-test('Sum2', () => {
+        });
 
-    expect(sum2(1, 2)).toEqual({ 
-        a: 1, 
-        b: 2, 
-        result : 3
-    })
+        it('1 + 3 테스트', () => {
 
-})
+            expect(sum(1, 3)).toEqual(4);
+
+        });
+
+        it('1 + 4 테스트', () => {
+
+            expect(sum(1, 4)).toEqual(5);
+
+        });
+
+        it('1 + 5 테스트', () => {
+
+            expect(sum(1, 5)).toEqual(6);
+
+        });
+
+    });
+});
+
+
+// https://jestjs.io/docs/en/expect
+
+
+describe('api 테스트', () => {
+
+    describe('api.ipify.org 테스트', () => {
+
+        it('오브젝트 내 원소중 ip가 속해있는지', () => {
+
+            get('https://api.ipify.org/?format=json').then(resp => {
+
+                expect(Object.keys(resp.data)).toContain('ip');
+
+            })
+
+        });
+
+    });
+
+});
 
 test('is', () => {
 
-    expect(1 + 2).not.toBe(0);
+    expect(1 + 2).not.toEqual(0);
 
 })
 
@@ -41,21 +75,3 @@ test('contain_arr', () => {
     expect(arr).toContain('e')
 
 })
-
-test('callback', done => {
-
-    get('https://api.ipify.org/?format=json').then(resp => {
-
-        expect(Object.keys(resp.data)).toContain('ip');
-
-    })
-
-    get('https://api.ipify.org/?format=json').then(resp => {
-
-        expect(resp.data).toHaveProperty('ip')
-
-        done()
-
-    })
-
-});

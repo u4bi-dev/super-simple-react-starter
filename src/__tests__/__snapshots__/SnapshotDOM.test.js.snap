@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test 1`] = `
+<div>
+  <a
+    href="https://adshot.asia"
+  >
+    <h1>
+      Adshot
+    </h1>
+  </a>
+</div>
+`;
