@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env EXECUTION_ENV=dev razzle start",
     "build": "razzle build",
-    "test": "razzle test --env=jsdom",
+    "test": "razzle test",
+    "test:ci": "cross-env CI=true razzle test",
     "start:prod": "cross-env NODE_ENV=production node build/server.js",
     "prebuild": "rebuild-node-sass"
   },
@@ -49,6 +50,7 @@
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
     "razzle": "^2.1.0",
+    "react-test-renderer": "^16.5.2",
     "rebuild-node-sass": "^1.1.0",
     "sass-loader": "^7.0.3",
     "serverless-api-cloudfront": "^0.9.4",
