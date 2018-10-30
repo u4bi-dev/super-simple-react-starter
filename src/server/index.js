@@ -30,6 +30,11 @@ server
     .disable('x-powered-by')
     .use(session(sessionConfig))
     .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+    .get('/mock-users', (req, res) => {
+        res.json([ 
+            { name : 'AA' }, { name : 'BB' }, { name : 'CC' }, { name : 'DD' } 
+        ])
+    })
     .get('/*', (req, res) => {
 
         const context = {}
