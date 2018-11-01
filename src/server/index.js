@@ -1,5 +1,6 @@
 import express from 'express'
 import session from 'express-session'
+import bodyParser from 'body-parser'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { ServerStyleSheet } from 'styled-components'
@@ -30,6 +31,8 @@ server
     .disable('x-powered-by')
     .use(session(sessionConfig))
     .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+    .use(bodyParser.json())
+	.use(bodyParser.urlencoded({ extended: true }))
     .get('/mock-users', (req, res) => {
         res.json([ 
             { name : 'AA' }, { name : 'BB' }, { name : 'CC' }, { name : 'DD' } 
