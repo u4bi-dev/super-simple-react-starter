@@ -7,32 +7,39 @@ import { fetchUsers } from '../store/actions'
 
 class Home extends Component {
 
-static prefetch(store) {
-    store.dispatch(fetchUsers());
-}
+    componentDidMount() {
+        const { onFetchUsers } = this.props
 
-renderUsers() {
-    const { users } = this.props;
+        onFetchUsers()
 
-    return users.map( (user, i) => ( <li key={ i }> { user.name }</li> ))
-}
+    }
 
-render() {
+    renderUsers(data) {
 
-    return (
-    <div className="Home">
-        <ul>{ this.renderUsers() }</ul>
-    </div>
-    )
-}
+        return data.map( (e, i) => ( <li key={ i }> { e.name }</li> ))
+
+    }
+
+    render() {
+
+        const { users } = this.props;
+
+        return (
+        <div className="Home">
+            <ul>
+                { !users.pending && this.renderUsers(users.data) }
+            </ul>
+        </div>
+        )
+    }
 }
 
 const mapState = (state, ownProps) => ({ 
-    users: state.users.data
+    users : state.users
 });
 
 const mapDispatch = (dispatch, ownProps) => ({
-
+    onFetchUsers : () => dispatch(fetchUsers())
 });
 
 export default connect(mapState, mapDispatch)(Home);
