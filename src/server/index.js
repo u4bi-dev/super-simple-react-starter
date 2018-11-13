@@ -17,6 +17,8 @@ import { setPrevPath } from '../store/actions'
 import { injectHTML } from './providers/html'
 import promises from './providers/promises'
 
+import * as ddb from '../dynamodb'
+
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
 const sessionConfig = {
@@ -32,7 +34,9 @@ server
     .use(session(sessionConfig))
     .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
     .use(bodyParser.json())
-	.use(bodyParser.urlencoded({ extended: true }))
+    .use(bodyParser.urlencoded({ extended: true }))
+    .get('/dynamo-create', (req, res) => ddb.call('put', { TableName: 'memos', Item: { userId: 'aa_user_id', memoId: 'aa_memo_id', title: 'title_title' } }).then(e => res.json({ done : true })))
+    .get('/dynamo-get', (req, res) => ddb.call('get', { TableName: 'memos', Key: { userId: 'aa_user_id', memoId: 'aa_memo_id' } }).then(e => res.json(e)))
     .get('/mock-users', (req, res) => {
         res.json([ 
             { name : 'AA' }, { name : 'BB' }, { name : 'CC' }, { name : 'DD' } 
