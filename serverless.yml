@@ -21,6 +21,18 @@ provider:
   runtime: nodejs8.10
   region: ap-northeast-2
 
+iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - dynamodb:DescribeTable
+      - dynamodb:Query
+      - dynamodb:Scan
+      - dynamodb:GetItem
+      - dynamodb:PutItem
+      - dynamodb:UpdateItem
+      - dynamodb:DeleteItem
+    Resource: "arn:aws:dynamodb:ap-northeast-2:*:*"
+
 package:
   exclude:
     - ./**
