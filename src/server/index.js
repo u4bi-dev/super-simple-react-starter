@@ -18,6 +18,7 @@ import { injectHTML } from './providers/html'
 import promises from './providers/promises'
 
 import * as ddb from '../dynamodb'
+import dynamoose from 'dynamoose'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
@@ -35,6 +36,14 @@ server
     .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
     .use(bodyParser.json())
     .use(bodyParser.urlencoded({ extended: true }))
+    .get('/dynamoose-create/:model/:id/:name', (req, res) => {
+        const Model = dynamoose.model(req.params.model, { id: Number, name: String })
+        const data = new Model({ id : req.params.id, name: req.params.name })
+
+        data.save()
+            .then(e => Model.get(req.params.id).then(e => res.json(e)))
+
+    })
     .get('/dynamo-create', (req, res) => ddb.call('put', { TableName: 'memos', Item: { userId: 'aa_user_id', memoId: 'aa_memo_id', title: 'title_title' } }).then(e => res.json({ done : true })))
     .get('/dynamo-get', (req, res) => ddb.call('get', { TableName: 'memos', Key: { userId: 'aa_user_id', memoId: 'aa_memo_id' } }).then(e => res.json(e)))
     .get('/mock-users', (req, res) => {
