@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/myungjaeyu/super-simple-react-starter#readme",
   "dependencies": {
+    "aws-sdk": "^2.354.0",
     "aws-serverless-express": "^3.2.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
