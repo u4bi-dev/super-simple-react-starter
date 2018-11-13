@@ -58,6 +58,7 @@ $ serverless deploy
 - Circle CI
 - react-test-renderer
 - DynamoDB
+- dynamoose
 
 Copyright © 2018 Liang Wang, Myungjae Yu
 
