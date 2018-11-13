@@ -57,6 +57,7 @@ $ serverless deploy
 - SEO support via react-helmet
 - Circle CI
 - react-test-renderer
+- DynamoDB
 
 Copyright © 2018 Liang Wang, Myungjae Yu
 
