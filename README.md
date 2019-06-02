@@ -59,6 +59,7 @@ $ serverless deploy
 - react-test-renderer
 - DynamoDB
 - dynamoose
+- storybook
 
 Copyright © 2018 Liang Wang, Myungjae Yu
 
