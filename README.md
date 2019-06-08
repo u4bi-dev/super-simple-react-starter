@@ -11,24 +11,24 @@ https://super-simple-react-starter-gdfyhflfqk.now.sh
 ## Installation
 
 ```
-npm install -g create-razzle-app
+yarn install -g create-razzle-app
 
 git clone https://github.com/myungjaeyu/super-simple-react-starter.git
 
 cd super-simple-react-starter
 
-npm install
+yarn install
 
-npm start
+yarn start
 ```
 
 ## Usage
 
-1. production build `npm run build`
+1. production build `yarn build`
 
-2. open the local server with the production file `npm run start:prod`
+2. open the local server with the production file `yarn start:prod`
 
-3. running tests `npm run test`
+3. running tests `yarn test`
 
 ## Deploy in Docker Container
 
